@@ -16,28 +16,28 @@ namespace PRM360.Api.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class CustomersController : ControllerBase
+    public class UsersController : ControllerBase
     {
-        private readonly ICustomerRepository _customerRepository;
-        private readonly ILogger<CustomersController> _logger;
-        public CustomersController(ICustomerRepository customerRepository, ILogger<CustomersController> logger)
+        private readonly IUserRepository _userRepository;
+        private readonly ILogger<UsersController> _logger;
+        public UsersController(IUserRepository userRepository, ILogger<UsersController> logger)
         {
-            _customerRepository = customerRepository;
+            _userRepository = userRepository;
             _logger = logger;
         }
        
         [HttpGet]
-        public CustomerApiResponseMessage GetCustomers()
+        public UserApiResponseMessage GetUsers()
         {            
-            var response = new CustomerApiResponseMessage();
+            var response = new UserApiResponseMessage();
             try
             {
-                var customerModel = _customerRepository.GetCustomers();
-                var customerJson = JsonConvert.SerializeObject(customerModel);
-                response.Result = customerJson;
+                var userModel = _userRepository.GetUsers();
+                var userJson = JsonConvert.SerializeObject(userModel);
+                response.Result = userJson;
                 response.Status = HttpStatusCode.OK;
                 response.Success = true;
-                response.Message = "Retrieved all customers";
+                response.Message = "Retrieved all users";
             }
             catch(Exception ex)
             {
@@ -51,17 +51,17 @@ namespace PRM360.Api.Controllers
         }
 
         [HttpGet("{id}")]
-        public CustomerApiResponseMessage GetCustomer(int id)
+        public UserApiResponseMessage GetUser(int id)
         {
-            var response = new CustomerApiResponseMessage();
+            var response = new UserApiResponseMessage();
             try
             {
-                var customerModel = _customerRepository.GetCustomer(id);
-                var customerJson = JsonConvert.SerializeObject(customerModel);
-                response.Result = customerJson;
+                var userModel = _userRepository.GetUser(id);
+                var userJson = JsonConvert.SerializeObject(userModel);
+                response.Result = userJson;
                 response.Status = HttpStatusCode.OK;
                 response.Success = true;
-                response.Message = "Retrieved customer";
+                response.Message = "Retrieved user";
             }
             catch (Exception ex)
             {
@@ -74,19 +74,28 @@ namespace PRM360.Api.Controllers
             return response;
         }
 
-        [HttpPost("/api/customer/login")]
-        public CustomerApiResponseMessage GetCustomerByUserName([FromBody]LoginModel request)
+        [HttpPost("/api/user/login")]
+        public UserApiResponseMessage GetUserByLogin([FromBody]LoginModel request)
         {
             _logger.LogInformation($"UserName:{request.UserName}, Password:{request.Password}");
-            var response = new CustomerApiResponseMessage();
+            var response = new UserApiResponseMessage();
             try
             {
-                var customerModel = _customerRepository.GetCustomerByLogin(request.UserName, request.Password);
-                var customerJson = JsonConvert.SerializeObject(customerModel);
-                response.Result = customerJson;
+                var userModel = _userRepository.GetUserByLogin(request.UserName, request.Password);
+                if(userModel == null)
+                {
+                    response.Result = null;
+                    response.Status = HttpStatusCode.NotFound;
+                    response.Success = false;
+                    response.Message = "User not available";
+
+                    return response;
+                }                
+                var userJson = JsonConvert.SerializeObject(userModel);
+                response.Result = userJson;
                 response.Status = HttpStatusCode.OK;
                 response.Success = true;
-                response.Message = "Retrieved customer by user name";
+                response.Message = "Retrieved user by login";
             }
             catch (Exception ex)
             {
@@ -99,16 +108,16 @@ namespace PRM360.Api.Controllers
             return response;
         }
 
-        [HttpPost("/api/customer/create")]
-        public CustomerApiResponseMessage PostCustomer([FromBody]Customer request)
+        [HttpPost("/api/user/create")]
+        public UserApiResponseMessage PostUser([FromBody]User request)
         {
-            var response = new CustomerApiResponseMessage();
+            var response = new UserApiResponseMessage();
             try
             {
-                _customerRepository.CreateCustomer(request);
+                _userRepository.CreateUser(request);
                 response.Status = HttpStatusCode.OK;
                 response.Success = true;
-                response.Message = "Customer created successfully";
+                response.Message = "User created successfully";
             }
             catch (Exception ex)
             {

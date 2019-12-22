@@ -9,21 +9,21 @@ using PRM360.Web.Models;
 
 namespace PRM360.Web.Services
 {
-    public class CustomerService : ICustomerService
+    public class UserService : IUserService
     {
         private readonly HttpClient _httpClient;
         private readonly string _baseEndPoint;
 
-        public CustomerService()
+        public UserService()
         {
             _httpClient = new HttpClient();
-            _baseEndPoint = @"http://localhost:5001/api";
+            _baseEndPoint = @"https://localhost:44311/api";
         }
 
-        public CustomerApiResponseMessage CreateCustomer(Customer customer)
+        public UserApiResponseMessage CreateUser(User user)
         {
-            var apiUrl = string.Format("{0}/customer/create", _baseEndPoint);
-            var response = _httpClient.PostAsync(apiUrl, CreateHttpContent(customer));
+            var apiUrl = string.Format("{0}/user/create", _baseEndPoint);
+            var response = _httpClient.PostAsync(apiUrl, CreateHttpContent(user));
             response.Wait();
             var result = response.Result;
             if (result.IsSuccessStatusCode)
@@ -31,24 +31,24 @@ namespace PRM360.Web.Services
                 var readTask = result.Content.ReadAsStringAsync();
                 readTask.Wait();
 
-                return JsonConvert.DeserializeObject<CustomerApiResponseMessage>(readTask.Result);
+                return JsonConvert.DeserializeObject<UserApiResponseMessage>(readTask.Result);
             }
 
             return null;
         }
 
-        public async Task<CustomerApiResponseMessage> CreateCustomerAsync<CustomerApiResponseMessage>(Customer customer)
+        public async Task<UserApiResponseMessage> CreateUserAsync<UserApiResponseMessage>(User user)
         {
-            var apiUrl = string.Format("{0}/customer/create",_baseEndPoint);
-            var response = await _httpClient.PostAsync(apiUrl, CreateHttpContent(customer));
+            var apiUrl = string.Format("{0}/user/create",_baseEndPoint);
+            var response = await _httpClient.PostAsync(apiUrl, CreateHttpContent(user));
             response.EnsureSuccessStatusCode();
             var data = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<CustomerApiResponseMessage>(data);
+            return JsonConvert.DeserializeObject<UserApiResponseMessage>(data);
         }
 
-        public CustomerApiResponseMessage GetCustomerById(int id)
+        public UserApiResponseMessage GetUserById(int id)
         {
-            var apiUrl = string.Format("{0}/customers/{1}", _baseEndPoint, id);
+            var apiUrl = string.Format("{0}/users/{1}", _baseEndPoint, id);
             var response = _httpClient.GetAsync(apiUrl);
             response.Wait();
             var result = response.Result;
@@ -57,24 +57,24 @@ namespace PRM360.Web.Services
                 var readTask = result.Content.ReadAsStringAsync();
                 readTask.Wait();
 
-                return JsonConvert.DeserializeObject<CustomerApiResponseMessage>(readTask.Result);
+                return JsonConvert.DeserializeObject<UserApiResponseMessage>(readTask.Result);
             }
 
             return null;
         }
 
-        public async Task<CustomerApiResponseMessage> GetCustomerByIdAsync<CustomerApiResponseMessage>(int id)
+        public async Task<UserApiResponseMessage> GetUserByIdAsync<UserApiResponseMessage>(int id)
         {
-            var apiUrl = string.Format("{0}/customers/{1}", _baseEndPoint, id);
+            var apiUrl = string.Format("{0}/users/{1}", _baseEndPoint, id);
             var response = await _httpClient.GetAsync(apiUrl);
             response.EnsureSuccessStatusCode();
             var data = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<CustomerApiResponseMessage>(data);
+            return JsonConvert.DeserializeObject<UserApiResponseMessage>(data);
         }
 
-        public CustomerApiResponseMessage GetCustomerByLogin(string username, string password)
+        public UserApiResponseMessage GetUserByLogin(string username, string password)
         {
-            var apiUrl = string.Format("{0}/customer/login", _baseEndPoint);
+            var apiUrl = string.Format("{0}/user/login", _baseEndPoint);
             var request = new LoginModel { UserName = username, Password = password };
             var response = _httpClient.PostAsync(apiUrl, CreateHttpContent(request));
             response.Wait();
@@ -84,25 +84,25 @@ namespace PRM360.Web.Services
                 var readTask = result.Content.ReadAsStringAsync();
                 readTask.Wait();
 
-                return JsonConvert.DeserializeObject<CustomerApiResponseMessage>(readTask.Result);
+                return JsonConvert.DeserializeObject<UserApiResponseMessage>(readTask.Result);
             }
 
             return null;
         }
 
-        public async Task<CustomerApiResponseMessage> GetCustomerByLoginAsync<CustomerApiResponseMessage>(string username, string password)
+        public async Task<UserApiResponseMessage> GetUserByLoginAsync<UserApiResponseMessage>(string username, string password)
         {
-            var apiUrl = string.Format("{0}/customer/login", _baseEndPoint);
+            var apiUrl = string.Format("{0}/user/login", _baseEndPoint);
             var request = new LoginModel { UserName = username, Password = password };
             var response = await _httpClient.PostAsync(apiUrl, CreateHttpContent(request));
             response.EnsureSuccessStatusCode();
             var data = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<CustomerApiResponseMessage>(data);
+            return JsonConvert.DeserializeObject<UserApiResponseMessage>(data);
         }
 
-        public CustomerApiResponseMessage GetCustomers()
+        public UserApiResponseMessage GetUsers()
         {
-            var apiUrl = string.Format("{0}/customers",_baseEndPoint);
+            var apiUrl = string.Format("{0}/users",_baseEndPoint);
             var response = _httpClient.GetAsync(apiUrl);
             response.Wait();
             var result = response.Result;
@@ -111,19 +111,19 @@ namespace PRM360.Web.Services
                 var readTask = result.Content.ReadAsStringAsync();
                 readTask.Wait();
 
-                return JsonConvert.DeserializeObject<CustomerApiResponseMessage>(readTask.Result);
+                return JsonConvert.DeserializeObject<UserApiResponseMessage>(readTask.Result);
             }
 
             return null;
         }
 
-        public async Task<CustomerApiResponseMessage> GetCustomersAsync<CustomerApiResponseMessage>()
+        public async Task<UserApiResponseMessage> GetUsersAsync<UserApiResponseMessage>()
         {
-            var apiUrl = string.Format("{0}/customers", _baseEndPoint);
+            var apiUrl = string.Format("{0}/users", _baseEndPoint);
             var response = await _httpClient.GetAsync(apiUrl);
             response.EnsureSuccessStatusCode();
             var data = await response.Content.ReadAsStringAsync();
-            return JsonConvert.DeserializeObject<CustomerApiResponseMessage>(data);
+            return JsonConvert.DeserializeObject<UserApiResponseMessage>(data);
         }
 
         private HttpContent CreateHttpContent<T>(T content)

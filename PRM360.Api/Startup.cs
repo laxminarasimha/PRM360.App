@@ -28,7 +28,7 @@ namespace PRM360.Api
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);            
-            services.AddSingleton(typeof(ICustomerRepository), typeof(CustomerRepository));
+            services.AddSingleton(typeof(IUserRepository), typeof(UserRepository));
            
             // Conect to Database
             services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection")));

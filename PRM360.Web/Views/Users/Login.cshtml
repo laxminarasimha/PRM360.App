@@ -3,6 +3,7 @@
 <h1>Login Page</h1>
 @using (Html.BeginForm())
 {
+    @Html.ValidationSummary();
     <div>
         @Html.LabelFor(model => model.UserName)
         @Html.TextBoxFor(model => model.UserName)

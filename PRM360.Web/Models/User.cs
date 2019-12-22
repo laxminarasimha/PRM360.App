@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace PRM360.Api.Models
+namespace PRM360.Web.Models
 {
-    public class Customer
+    public class User
     {
         public int Id { get; set; }
 

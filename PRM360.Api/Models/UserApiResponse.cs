@@ -4,9 +4,9 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 
-namespace PRM360.Web.Models
+namespace PRM360.Api.Models
 {
-    public class CustomerApiResponseMessage
+    public class UserApiResponseMessage
     {
         public HttpStatusCode Status { get; set; }
         public bool Success { get; set; }

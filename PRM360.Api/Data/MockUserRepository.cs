@@ -6,13 +6,13 @@ using PRM360.Api.Models;
 
 namespace PRM360.Api.Data
 {
-    public class MockCustomerRepository : ICustomerRepository
+    public class MockUserRepository : IUserRepository
     {
-        private List<Customer> CustomerList { get; set; }
-        public MockCustomerRepository()
+        private List<User> UserList { get; set; }
+        public MockUserRepository()
         {
-            CustomerList = new List<Customer>();
-            CustomerList.Add(new Customer
+            UserList = new List<User>();
+            UserList.Add(new User
             {
                 Id = 1,
                 FirstName = "Chaithaya",
@@ -26,7 +26,7 @@ namespace PRM360.Api.Data
                 Phone = 123456789,
                 GST = "18%"
             });
-            CustomerList.Add(new Customer
+            UserList.Add(new User
             {
                 Id = 2,
                 FirstName = "Murthy",
@@ -41,24 +41,24 @@ namespace PRM360.Api.Data
                 GST = "20%"
             });
         }
-        public List<Customer> GetCustomers()
+        public List<User> GetUsers()
         {
-            return CustomerList;
+            return UserList;
         }
 
-        public Customer GetCustomer(int Id)
+        public User GetUser(int Id)
         {
-            return CustomerList.FirstOrDefault(o => o.Id == Id);
+            return UserList.FirstOrDefault(o => o.Id == Id);
         }
 
-        public Customer GetCustomerByLogin(string userName, string password)
+        public User GetUserByLogin(string userName, string password)
         {
-            return CustomerList.FirstOrDefault(o => o.Email == userName && o.Password == password);
+            return UserList.FirstOrDefault(o => o.Email == userName && o.Password == password);
         }
 
-        public void CreateCustomer(Customer customer)
+        public void CreateUser(User user)
         {
-            CustomerList.Add(customer);
+            UserList.Add(user);
         }
     }
 }
