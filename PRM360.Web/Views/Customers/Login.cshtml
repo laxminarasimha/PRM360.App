@@ -1,0 +1,17 @@
+﻿@model PRM360.Web.Models.LoginModel
+
+<h1>Login Page</h1>
+@using (Html.BeginForm())
+{
+    <div>
+        @Html.LabelFor(model => model.UserName)
+        @Html.TextBoxFor(model => model.UserName)
+    </div>
+    <div>
+        @Html.LabelFor(model => model.Password)
+        @Html.TextBoxFor(model => model.Password)
+    </div>
+    <div>
+        <input type="submit" value="Login" />
+    </div>
+}
