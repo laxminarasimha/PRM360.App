@@ -1,0 +1,50 @@
+﻿@model PRM360.Web.Models.User
+
+<h1>Login Page</h1>
+@using (Html.BeginForm())
+{
+@Html.ValidationSummary();
+<div>
+    @Html.LabelFor(model => model.FirstName)
+    @Html.TextBoxFor(model => model.FirstName)
+</div>
+<div>
+    @Html.LabelFor(model => model.LastName)
+    @Html.TextBoxFor(model => model.LastName)
+</div>
+<div>
+    @Html.LabelFor(model => model.Role)
+    @Html.TextBoxFor(model => model.Role)
+</div>
+<div>
+    @Html.LabelFor(model => model.CompanyName)
+    @Html.TextBoxFor(model => model.CompanyName)
+</div>
+<div>
+    @Html.LabelFor(model => model.Currency)
+    @Html.TextBoxFor(model => model.Currency)
+</div>
+<div>
+    @Html.LabelFor(model => model.TimeZone)
+    @Html.TextBoxFor(model => model.TimeZone)
+</div>
+<div>
+    @Html.LabelFor(model => model.Email)
+    @Html.TextBoxFor(model => model.Email)
+</div>
+<div>
+    @Html.LabelFor(model => model.Phone)
+    @Html.TextBoxFor(model => model.Phone)
+</div>
+<div>
+    @Html.LabelFor(model => model.Password)
+    @Html.TextBoxFor(model => model.Password)
+</div>
+<div>
+    @Html.LabelFor(model => model.GST)
+    @Html.TextBoxFor(model => model.GST)
+</div>
+<div>
+    <input type="submit" value="SIGN UP" />
+</div>
+}

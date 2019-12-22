@@ -14,6 +14,6 @@ namespace PRM360.Api.Data
 
         User GetUserByLogin(string userName, string password);
 
-        void CreateUser(User user);
+        User CreateUser(User user);
     }
 }

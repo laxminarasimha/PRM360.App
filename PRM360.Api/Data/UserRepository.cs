@@ -13,14 +13,16 @@ namespace PRM360.Api.Data
         {
             _context = context;
         }
-        public void CreateUser(User user)
+        public User CreateUser(User user)
         {
             if(_context.Users == null)
             {
-                return;
+                return null;
             }
             _context.Users.Add(user);
             _context.SaveChanges();
+
+            return user;
         }
 
         public User GetUser(int id)

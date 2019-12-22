@@ -17,7 +17,7 @@ namespace PRM360.Web.Services
         public UserService()
         {
             _httpClient = new HttpClient();
-            _baseEndPoint = @"https://localhost:44311/api";
+            _baseEndPoint = @"https://localhost:5001/api";
         }
 
         public UserApiResponseMessage CreateUser(User user)

@@ -112,9 +112,29 @@ namespace PRM360.Api.Controllers
         public UserApiResponseMessage PostUser([FromBody]User request)
         {
             var response = new UserApiResponseMessage();
+            if (request == null)
+            {
+                response.Result = null;
+                response.Status = HttpStatusCode.BadRequest;
+                response.Success = false;
+                response.Message = "Request is null";
+
+                return response;
+            }            
             try
             {
-                _userRepository.CreateUser(request);
+                var userModel = _userRepository.CreateUser(request);
+                if(userModel == null)
+                {
+                    response.Result = null;
+                    response.Status = HttpStatusCode.BadRequest;
+                    response.Success = false;
+                    response.Message = "Error creating user";
+
+                    return response;
+                }
+                var userJson = JsonConvert.SerializeObject(userModel);
+                response.Result = userJson;
                 response.Status = HttpStatusCode.OK;
                 response.Success = true;
                 response.Message = "User created successfully";

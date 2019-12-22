@@ -56,9 +56,10 @@ namespace PRM360.Api.Data
             return UserList.FirstOrDefault(o => o.Email == userName && o.Password == password);
         }
 
-        public void CreateUser(User user)
+        public User CreateUser(User user)
         {
             UserList.Add(user);
+            return user;
         }
     }
 }

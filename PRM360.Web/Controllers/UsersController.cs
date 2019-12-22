@@ -36,10 +36,26 @@ namespace PRM360.Web.Controllers
             return View("Dashboard", userMoodel);
         }
 
-        public IActionResult GetUsers()
+        public IActionResult Register()
         {
-            UserApiResponseMessage response = _userService.GetUsers();
-            return null;
+            return View();
+        }
+
+        [HttpPost]
+        public IActionResult Register(User model)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(model);
+            }
+            UserApiResponseMessage response = _userService.CreateUser(model);
+            if (response == null || !response.Success || string.IsNullOrEmpty(response.Result))
+            {
+                ModelState.AddModelError("SignupError", "Error registering the user");
+                return View(model);
+            }
+            model = JsonConvert.DeserializeObject<User>(response.Result);
+            return View("Dashboard", model);
         }
     }
 }
