@@ -7,7 +7,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PRM360.Api", "PRM360.Api\PR
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PRM360.Web", "PRM360.Web\PRM360.Web.csproj", "{9A00BFD6-878A-468F-BFAA-7CD004815134}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "prm360", "..\prm360\prm360.csproj", "{A31CB3DF-C6A0-451F-9DB2-CAAA610D9260}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "prm360", "prm360\prm360.csproj", "{50A414F0-28B3-4C96-B3FF-E1D2B8E590C0}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -23,10 +23,10 @@ Global
 		{9A00BFD6-878A-468F-BFAA-7CD004815134}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9A00BFD6-878A-468F-BFAA-7CD004815134}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9A00BFD6-878A-468F-BFAA-7CD004815134}.Release|Any CPU.Build.0 = Release|Any CPU
-		{A31CB3DF-C6A0-451F-9DB2-CAAA610D9260}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{A31CB3DF-C6A0-451F-9DB2-CAAA610D9260}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{A31CB3DF-C6A0-451F-9DB2-CAAA610D9260}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{A31CB3DF-C6A0-451F-9DB2-CAAA610D9260}.Release|Any CPU.Build.0 = Release|Any CPU
+		{50A414F0-28B3-4C96-B3FF-E1D2B8E590C0}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50A414F0-28B3-4C96-B3FF-E1D2B8E590C0}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50A414F0-28B3-4C96-B3FF-E1D2B8E590C0}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50A414F0-28B3-4C96-B3FF-E1D2B8E590C0}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
