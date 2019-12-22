@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\Git\\PRM360\\PRM360.Api\\PRM360.Api.csproj": {}
+    "D:\\Git\\PRM360.App\\PRM360.Api\\PRM360.Api.csproj": {}
   },
   "projects": {
-    "D:\\Git\\PRM360\\PRM360.Api\\PRM360.Api.csproj": {
+    "D:\\Git\\PRM360.App\\PRM360.Api\\PRM360.Api.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\Git\\PRM360\\PRM360.Api\\PRM360.Api.csproj",
+        "projectUniqueName": "D:\\Git\\PRM360.App\\PRM360.Api\\PRM360.Api.csproj",
         "projectName": "PRM360.Api",
-        "projectPath": "D:\\Git\\PRM360\\PRM360.Api\\PRM360.Api.csproj",
+        "projectPath": "D:\\Git\\PRM360.App\\PRM360.Api\\PRM360.Api.csproj",
         "packagesPath": "C:\\Users\\chait\\.nuget\\packages\\",
-        "outputPath": "D:\\Git\\PRM360\\PRM360.Api\\obj\\",
+        "outputPath": "D:\\Git\\PRM360.App\\PRM360.Api\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
